@@ -5,7 +5,6 @@ Bundle-Vendor: %providerName
 Bundle-Version: 2.0.100.qualifier
 Bundle-SymbolicName: ru.tormozit.dt.codelinkopener.plugin.ui;singleton:=true
 Bundle-Activator: ru.tormozit.dt.codelinkopener.plugin.ui.Activator
-Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Require-Bundle: com.google.inject;bundle-version="[3.0.0,4.0.0)",
  org.eclipse.ui;bundle-version="[3.106.1,4.0.0)",
@@ -38,3 +37,4 @@ Import-Package: com._1c.g5.aef2.engines;version="4.0.0",
  org.eclipse.ui.forms.editor,
  org.osgi.framework;version="[1.8.0,2.0.0)"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
