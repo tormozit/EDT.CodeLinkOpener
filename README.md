@@ -7,7 +7,7 @@
 2. Eclipse Oxygen (4.7.3) for RCP and RAP Developers (http://www.eclipse.org/downloads/packages/release/oxygen/3/eclipse-rcp-and-rap-developers)
 3. Java SE Development Kit 8u181  (http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
-# Запуск плагина из Eclipse
+# Запуск Eclipse для разработки плагина
 Запускаем Eclipse на чистой рабочей области (workspace) 
 ## Импортируем проект
 Импортировать проект можно любым удобным способом. Или, например:
