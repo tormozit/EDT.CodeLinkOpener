@@ -8,7 +8,7 @@
 3. Java SE Development Kit 8u181  (http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
 # Запуск Eclipse для разработки плагина
-Запускаем Eclipse на чистой рабочей области (workspace) 
+Запускаем Eclipse RCP на чистой рабочей области (workspace) 
 ## Импортируем проект
 Импортировать проект можно любым удобным способом. Или, например:
  1. File -> Import -> Projects from Git
