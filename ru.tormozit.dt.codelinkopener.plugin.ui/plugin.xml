@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension point="org.eclipse.ui.commands">
+      <command
+            id="ru.tormozit.dt.codelinkopener.plugin.ui.commands.Show"
+            name="%command.name">
+      </command>
+   </extension>
+   <extension point="org.eclipse.ui.handlers">
+	  <handler
+		commandId="ru.tormozit.dt.codelinkopener.plugin.ui.commands.Show"
+		class="ru.tormozit.dt.codelinkopener.plugin.ui.ExecutableExtensionFactory:ru.tormozit.dt.codelinkopener.plugin.ui.OpenerHandler">
+	</handler>
+   </extension>
+   <extension point="org.eclipse.ui.bindings">
+    <key
+          commandId="ru.tormozit.dt.codelinkopener.plugin.ui.commands.Show"
+          schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+          sequence="CTRL+SHIFT+J"/>
+   </extension>
+   <extension point="org.eclipse.ui.menus">
+      <menuContribution locationURI="menu:navigate">
+         <command commandId="ru.tormozit.dt.codelinkopener.plugin.ui.commands.Show" label="Переход из буфера обмена" />
+      </menuContribution>
+   </extension></plugin>
