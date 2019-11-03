@@ -16,7 +16,7 @@
 После импорта проекта необходимо настроить целевую платформу. Для этого при открытии файла target/default.target нужно ввести в появившемся окне логин и пароль от "https://partners.v8.1c.ru/". После дожидаемся установки всех компонент и устанавливаем данную целевую платформу, ПКМ на <b>target/default.target</b> -> Open with -> Target Editor -> Set as target platform.
 
 ## Запуск 
-ПКМ на проекте <b>com._1c.dt.example.plugin.ui</b> -> Run as -> Eclipse application.
+ПКМ на проекте <b>ru.tormozit.dt.codelinkopener.plugin.ui</b> -> Run as -> Eclipse application.
 После чего запустится 1C:Enterprise Development Tools с разработанным плагином.
 Для проверки можно создать новую конфигурацию с документом и регистром накопления, далее в объектном модуле документа через контекстное меню вызвать "Создать движения регистров"
 
