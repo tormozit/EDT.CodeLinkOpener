@@ -61,10 +61,11 @@ public class OpenerHandlerDialog extends TitleAreaDialog {
 		this.projectManager = projectManager;
 		typeMap1C.put("HTTPСервис", "HTTPService");
 		typeMap1C.put("WebСервис", "WebService");
-		typeMap1C.put("ВнешнийИсточникДанных", "ExternalDataSource"); //
+		typeMap1C.put("ВнешнийИсточникДанных", "ExternalDataSource");
 		typeMap1C.put("Документ", "Document");
-		typeMap1C.put("Задача", "Task"); //
+		typeMap1C.put("Задача", "Task");
 		typeMap1C.put("Команда", "Command");
+		typeMap1C.put("Конфигурация", "Configuration"); //
 		typeMap1C.put("МодульУправляемогоПриложения", "ManagedApplicationModule");
 		typeMap1C.put("МодульОбычногоПриложения", "OrdinaryApplicationModule");
 		typeMap1C.put("МодульВнешнегоСоединения", "ExternalConnectionModule");
@@ -72,28 +73,31 @@ public class OpenerHandlerDialog extends TitleAreaDialog {
 		typeMap1C.put("МодульНабораЗаписей", "RecordsetModule");
 		typeMap1C.put("МодульМенеджера", "ManagerModule");
 		typeMap1C.put("МодульКоманды", "CommandModule");
+		typeMap1C.put("МодульСеанса", "SessionModule");
 		typeMap1C.put("Модуль", "Module");
 		typeMap1C.put("ОбщаяКоманда", "CommonCommand");
 		typeMap1C.put("ОбщийМодуль", "CommonModule");
 		typeMap1C.put("ОбщаяФорма", "CommonForm");
 		typeMap1C.put("Обработка", "DataProcessor");
 		typeMap1C.put("Отчет", "Report");
-		typeMap1C.put("Перечисление", "Enum"); //
-		typeMap1C.put("ПланВидовРасчета", "ChartOfCalculationTypes"); //
-		typeMap1C.put("ПланВидовХарактеристик", "ChartOfCharacteristicTypes"); //
-		typeMap1C.put("ПланОбмена", "ExchangePlan"); //
-		typeMap1C.put("РегистрБухгалтерии", "AccountingRegister"); //
+		typeMap1C.put("Перечисление", "Enum");
+		typeMap1C.put("ПланВидовРасчета", "ChartOfCalculationTypes");
+		typeMap1C.put("ПланВидовХарактеристик", "ChartOfCharacteristicTypes");
+		typeMap1C.put("ПланОбмена", "ExchangePlan");
+		typeMap1C.put("РегистрБухгалтерии", "AccountingRegister");
 		typeMap1C.put("РегистрНакопления", "AccumulationRegister");
-		typeMap1C.put("РегистрРасчета", "CalculationRegister"); //
+		typeMap1C.put("РегистрРасчета", "CalculationRegister"); 
 		typeMap1C.put("РегистрСведений", "InformationRegister");
 		typeMap1C.put("Форма", "Form");
 		typeMap1C.put("Справочник", "Catalog");
 	}
 	
-	private static EClass getMdLiteral(String mdClassName, Boolean isExternalDataSource, Boolean isForm) {
+	private static EClass getMdLiteral(String mdClassName, Boolean isExternalDataSource, Boolean isForm, Boolean isCommand) {
 		EClass mdLiteral = MdClassPackage.Literals.CONFIGURATION;
 		if (mdClassName.equals("Подсистема")) 
 			mdLiteral = MdClassPackage.Literals.SUBSYSTEM;
+		else if (mdClassName.equals("Конфигурация")) 
+			mdLiteral = MdClassPackage.Literals.CONFIGURATION;
 		else if (mdClassName.equals("HTTPСервис"))
 			mdLiteral = MdClassPackage.Literals.HTTP_SERVICE;
 		else if (mdClassName.equals("WebСервис"))
@@ -103,11 +107,15 @@ public class OpenerHandlerDialog extends TitleAreaDialog {
 		else if (mdClassName.equals("Документ"))
 			if (isForm)
 				mdLiteral = MdClassPackage.Literals.DOCUMENT_FORM;
+			else if (isCommand)
+				mdLiteral = MdClassPackage.Literals.DOCUMENT_COMMAND;
 			else
 				mdLiteral = MdClassPackage.Literals.DOCUMENT;
 		else if (mdClassName.equals("Задача"))
 			if (isForm)
 				mdLiteral = MdClassPackage.Literals.TASK_FORM;
+			else if (isCommand)
+				mdLiteral = MdClassPackage.Literals.TASK_COMMAND;
 			else
 				mdLiteral = MdClassPackage.Literals.TASK;
 		else if (mdClassName.equals("ОбщаяКоманда")) 
@@ -119,56 +127,78 @@ public class OpenerHandlerDialog extends TitleAreaDialog {
 		else if (mdClassName.equals("Обработка")) 
 			if (isForm)
 				mdLiteral = MdClassPackage.Literals.DATA_PROCESSOR_FORM;
+			else if (isCommand)
+				mdLiteral = MdClassPackage.Literals.DATA_PROCESSOR_COMMAND;
 			else
 				mdLiteral = MdClassPackage.Literals.DATA_PROCESSOR;
 		else if (mdClassName.equals("Отчет")) 
 			if (isForm)
 				mdLiteral = MdClassPackage.Literals.REPORT_FORM;
+			else if (isCommand)
+				mdLiteral = MdClassPackage.Literals.REPORT_COMMAND;
 			else
 				mdLiteral = MdClassPackage.Literals.REPORT;
 		else if (mdClassName.equals("Перечисление")) 
 			if (isForm)
 				mdLiteral = MdClassPackage.Literals.ENUM_FORM;
+			else if (isCommand)
+				mdLiteral = MdClassPackage.Literals.ENUM_COMMAND;
 			else
 				mdLiteral = MdClassPackage.Literals.ENUM;
 		else if (mdClassName.equals("ПланВидовХарактеристик")) 
 			if (isForm)
 				mdLiteral = MdClassPackage.Literals.CHART_OF_CHARACTERISTIC_TYPES_FORM;
+			else if (isCommand)
+				mdLiteral = MdClassPackage.Literals.CHART_OF_CHARACTERISTIC_TYPES_COMMAND;
 			else
 				mdLiteral = MdClassPackage.Literals.CHART_OF_CHARACTERISTIC_TYPES;
 		else if (mdClassName.equals("ПланВидовРасчета")) 
 			if (isForm)
 				mdLiteral = MdClassPackage.Literals.CHART_OF_CALCULATION_TYPES_FORM;
+			else if (isCommand)
+				mdLiteral = MdClassPackage.Literals.CHART_OF_CALCULATION_TYPES_COMMAND;
 			else
 				mdLiteral = MdClassPackage.Literals.CHART_OF_CALCULATION_TYPES;
 		else if (mdClassName.equals("ПланОбмена"))
 			if (isForm)
 				mdLiteral = MdClassPackage.Literals.EXCHANGE_PLAN_FORM;
+			else if (isCommand)
+				mdLiteral = MdClassPackage.Literals.EXCHANGE_PLAN_COMMAND;
 			else
 				mdLiteral = MdClassPackage.Literals.EXCHANGE_PLAN;
 		else if (mdClassName.equals("РегистрБухгалтерии")) 
 			if (isForm)
 				mdLiteral = MdClassPackage.Literals.ACCOUNTING_REGISTER_FORM;
+			else if (isCommand)
+				mdLiteral = MdClassPackage.Literals.ACCOUNTING_REGISTER_COMMAND;
 			else
 				mdLiteral = MdClassPackage.Literals.ACCOUNTING_REGISTER;
 		else if (mdClassName.equals("РегистрНакопления")) 
 			if (isForm)
 				mdLiteral = MdClassPackage.Literals.ACCUMULATION_REGISTER_FORM;
+			else if (isCommand)
+				mdLiteral = MdClassPackage.Literals.ACCUMULATION_REGISTER_COMMAND;
 			else
 				mdLiteral = MdClassPackage.Literals.ACCUMULATION_REGISTER;
 		else if (mdClassName.equals("РегистрРасчета")) 
 			if (isForm)
 				mdLiteral = MdClassPackage.Literals.CALCULATION_REGISTER_FORM;
+			else if (isCommand)
+				mdLiteral = MdClassPackage.Literals.CALCULATION_REGISTER_COMMAND;
 			else
 				mdLiteral = MdClassPackage.Literals.CALCULATION_REGISTER;
 		else if (mdClassName.equals("РегистрСведений"))
 			if (isForm)
 				mdLiteral = MdClassPackage.Literals.INFORMATION_REGISTER_FORM;
+			else if (isCommand)
+				mdLiteral = MdClassPackage.Literals.INFORMATION_REGISTER_COMMAND;
 			else
 				mdLiteral = MdClassPackage.Literals.INFORMATION_REGISTER;
 		else if (mdClassName.equals("Справочник")) 
 			if (isForm)
 				mdLiteral = MdClassPackage.Literals.CATALOG_FORM;
+			else if (isCommand)
+				mdLiteral = MdClassPackage.Literals.CATALOG_COMMAND;
 			else
 				mdLiteral = MdClassPackage.Literals.CATALOG;
 		return mdLiteral;
@@ -190,7 +220,7 @@ public class OpenerHandlerDialog extends TitleAreaDialog {
 		TextTransfer textTransfer = TextTransfer.getInstance();
 		String textData = (String) clipboard.getContents(textTransfer);
 		clipboard.dispose();
-		if (textData.isEmpty())
+		if (textData == null || textData.isEmpty())
 			return control;
 		
 		control.setLayout(new GridLayout());
@@ -205,7 +235,7 @@ public class OpenerHandlerDialog extends TitleAreaDialog {
 
 		String letter = "a-zа-яёА-ЯЁ0-9_";
 		Pattern regexp = Pattern.compile("(\\{([" + letter + "]+ )?((?:[" + letter
-				+ "]+\\.)*(?:Форма|Модуль|МодульУправляемогоПриложения|МодульОбычногоПриложения|МодульВнешнегоСоединения|МодульКоманды|МодульМенеджера|МодульОбъекта|МодульНабораЗаписей))\\((\\d+)(?:,(\\d+))?\\)\\})");
+				+ "]+\\.)*(?:Форма|Модуль|МодульУправляемогоПриложения|МодульОбычногоПриложения|МодульСеанса|МодульВнешнегоСоединения|МодульКоманды|МодульМенеджера|МодульОбъекта|МодульНабораЗаписей))\\((\\d+)(?:,(\\d+))?\\)\\})");
 		Matcher m = regexp.matcher(textData);
 		while (m.find()) {
 			List<String> list = Lists.newArrayList();
@@ -250,9 +280,11 @@ public class OpenerHandlerDialog extends TitleAreaDialog {
 		String engModuleName = "";
 		String mdClassName = "";
 		Boolean isForm = false;
+		Boolean isCommand = false;
 		Boolean isExternalDataSource = false;
 		if (fragments.length == 1) {
-			engModuleName = "Configuration._";
+			mdClassName = "Конфигурация";
+			engModuleName = typeMap1C.get(mdClassName);
 		} else {
 			for (int counter = 0; counter < fragments.length / 2; counter++) {
 				String rusName = fragments[counter * 2];
@@ -263,10 +295,15 @@ public class OpenerHandlerDialog extends TitleAreaDialog {
 				}
 				if (rusName.equals("Форма"))
 					isForm = true;
+				else if (rusName.equals("Команда"))
+					isCommand = true;
 				else if (rusName.equals("ВнешнийИсточникДанных"))
 					isExternalDataSource = true;
-				else
+				else {
+					if (rusName.equals("ОбщаяФорма"))
+						isForm = true;						
 					mdClassName = rusName;
+				}
 				String engName = typeMap1C.get(rusName);
 				if (!engModuleName.isEmpty())
 					engModuleName += ".";
@@ -275,15 +312,15 @@ public class OpenerHandlerDialog extends TitleAreaDialog {
 				engModuleName += fragments[counter * 2 + 1];
 			}
 		}
-		EClass mdLiteral = getMdLiteral(mdClassName, isExternalDataSource, isForm);
-		String modulePropertyName = typeMap1C.get(fragments[fragments.length - 1]);
-		modulePropertyName = Character.toString(modulePropertyName.charAt(0)).toLowerCase() + modulePropertyName.substring(1); // Convert first letter to lower case
+		EClass mdLiteral = getMdLiteral(mdClassName, isExternalDataSource, isForm, isCommand);
 		MdObject mdObject = (MdObject) getConfigurationObject(mdLiteral, engModuleName, bmEmfIndexManager, projectManager);
 		if (mdObject == null)
 			return;
+		String modulePropertyName = typeMap1C.get(fragments[fragments.length - 1]);
+		modulePropertyName = Character.toString(modulePropertyName.charAt(0)).toLowerCase() + modulePropertyName.substring(1); // Convert first letter to lower case
 		EStructuralFeature moduleProperty = mdObject.eClass().getEStructuralFeature(modulePropertyName);
 		close();
-		int lineNumber = Integer.parseInt(list.get(2));
+		int lineNumber = Integer.parseInt(list.get(2)) - 1;
 		OpenHelper openHelper = new OpenHelper();
 		IEditorPart editorPart = openHelper.openEditor(mdObject, moduleProperty);
 		if (isForm) {
@@ -340,6 +377,13 @@ public class OpenerHandlerDialog extends TitleAreaDialog {
 		Iterator<IEObjectDescription> objectItr = objectIndex.iterator();
 		if (objectItr.hasNext())
 			object = (MdObject) objectItr.next().getEObjectOrProxy();
+		else // for debug
+		{
+//			Iterable<IEObjectDescription> objectIndex1 = bmEmfIndexProvider.getEObjectIndexByType(mdLiteral);
+//			Iterator<IEObjectDescription> objectItr1 = objectIndex.iterator();
+//			if (objectItr1.hasNext())
+//				object = (MdObject) objectItr1.next().getEObjectOrProxy();
+		}
 		return object;
 	}
 

@@ -17,7 +17,7 @@
     <key
           commandId="ru.tormozit.dt.codelinkopener.plugin.ui.commands.Show"
           schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
-          sequence="CTRL+SHIFT+J"/>
+          sequence="ALT+SHIFT+G"/>
    </extension>
    <extension point="org.eclipse.ui.menus">
       <menuContribution locationURI="menu:navigate">
