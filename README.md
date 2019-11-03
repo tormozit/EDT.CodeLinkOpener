@@ -2,7 +2,7 @@
 
 Минимальная версия EDT: 1.10.0
 
-# Для разработки и запуска плагина необходимо, чтобы были установлены:
+# Для разработки плагина необходимо, чтобы были установлены:
 1. 1C:Enterprise Development Tools версии 1.10.0. (https://releases.1c.ru/version_files?nick=DevelopmentTools10&ver=1.10.0.1603)
 2. Eclipse Oxygen (4.7.3) for RCP and RAP Developers (http://www.eclipse.org/downloads/packages/release/oxygen/3/eclipse-rcp-and-rap-developers)
 3. Java SE Development Kit 8u181  (http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
