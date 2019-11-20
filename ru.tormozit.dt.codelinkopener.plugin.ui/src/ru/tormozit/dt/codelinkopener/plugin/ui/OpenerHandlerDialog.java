@@ -233,9 +233,10 @@ public class OpenerHandlerDialog extends TitleAreaDialog {
 		StyledText styledText = viewer.getTextWidget();
 		styledText.setText(textData);
 
-		String letter = "a-zа-яёА-ЯЁ0-9_";
+		String letter = "a-zа-яёA-ZА-ЯЁ0-9_";
 		Pattern regexp = Pattern.compile("(\\{([" + letter + "]+ )?((?:[" + letter
-				+ "]+\\.)*(?:Форма|Модуль|МодульУправляемогоПриложения|МодульОбычногоПриложения|МодульСеанса|МодульВнешнегоСоединения|МодульКоманды|МодульМенеджера|МодульОбъекта|МодульНабораЗаписей))\\((\\d+)(?:,(\\d+))?\\)\\})");
+				+ "]+\\.)*(?:Форма|Модуль|МодульУправляемогоПриложения|МодульОбычногоПриложения|МодульСеанса|МодульВнешнегоСоединения|МодульКоманды|МодульМенеджера|МодульОбъекта|МодульНабораЗаписей))\\((\\d+)(?:,(\\d+))?\\)\\})",
+				Pattern.MULTILINE | Pattern.CASE_INSENSITIVE);
 		Matcher m = regexp.matcher(textData);
 		while (m.find()) {
 			List<String> list = Lists.newArrayList();
