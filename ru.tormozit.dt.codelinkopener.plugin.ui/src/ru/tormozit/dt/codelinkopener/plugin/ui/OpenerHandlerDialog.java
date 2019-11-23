@@ -65,6 +65,7 @@ public class OpenerHandlerDialog extends TitleAreaDialog {
 		typeMap1C.put("Документ", "Document");
 		typeMap1C.put("Задача", "Task");
 		typeMap1C.put("Команда", "Command");
+		typeMap1C.put("Константа", "Constant");
 		typeMap1C.put("Конфигурация", "Configuration"); //
 		typeMap1C.put("МодульУправляемогоПриложения", "ManagedApplicationModule");
 		typeMap1C.put("МодульОбычногоПриложения", "OrdinaryApplicationModule");
@@ -72,6 +73,7 @@ public class OpenerHandlerDialog extends TitleAreaDialog {
 		typeMap1C.put("МодульОбъекта", "ObjectModule");
 		typeMap1C.put("МодульНабораЗаписей", "RecordsetModule");
 		typeMap1C.put("МодульМенеджера", "ManagerModule");
+		typeMap1C.put("МодульМенеджераЗначения", "ValueManagerModule");
 		typeMap1C.put("МодульКоманды", "CommandModule");
 		typeMap1C.put("МодульСеанса", "SessionModule");
 		typeMap1C.put("Модуль", "Module");
@@ -201,6 +203,8 @@ public class OpenerHandlerDialog extends TitleAreaDialog {
 				mdLiteral = MdClassPackage.Literals.CATALOG_COMMAND;
 			else
 				mdLiteral = MdClassPackage.Literals.CATALOG;
+		else if (mdClassName.equals("Константа")) 
+			mdLiteral = MdClassPackage.Literals.CONSTANT;
 		return mdLiteral;
 	}
 
@@ -235,7 +239,7 @@ public class OpenerHandlerDialog extends TitleAreaDialog {
 
 		String letter = "a-zа-яёA-ZА-ЯЁ0-9_";
 		Pattern regexp = Pattern.compile("(\\{([" + letter + "]+ )?((?:[" + letter
-				+ "]+\\.)*(?:Форма|Модуль|МодульУправляемогоПриложения|МодульОбычногоПриложения|МодульСеанса|МодульВнешнегоСоединения|МодульКоманды|МодульМенеджера|МодульОбъекта|МодульНабораЗаписей))\\((\\d+)(?:,(\\d+))?\\)\\})",
+				+ "]+\\.)*(?:Форма|Модуль|МодульУправляемогоПриложения|МодульОбычногоПриложения|МодульСеанса|МодульВнешнегоСоединения|МодульКоманды|МодульМенеджера|МодульМенеджераЗначения|МодульОбъекта|МодульНабораЗаписей))\\((\\d+)(?:,(\\d+))?\\)\\})",
 				Pattern.MULTILINE | Pattern.CASE_INSENSITIVE);
 		Matcher m = regexp.matcher(textData);
 		while (m.find()) {
